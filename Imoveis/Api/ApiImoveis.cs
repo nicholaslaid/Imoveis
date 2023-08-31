@@ -23,7 +23,7 @@ namespace Imoveis.Api
             {
                 result = JsonConvert.DeserializeObject<List<Imoveiss>>(response.data);
             }
-
+             
 
 
             return result;
