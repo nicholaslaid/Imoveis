@@ -20,7 +20,7 @@ namespace Imoveis
         private void LoadImoveis()
         {
             ApiImoveis api = new ApiImoveis();
-            dgvImoveis.DataSource = api.GetAllImoveis();
+            dgvImoveis.DataSource = api.GetAllImoveis(txtSearch.Text);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -75,6 +75,22 @@ namespace Imoveis
         private void Form1_Activated(object sender, EventArgs e)
         {
             LoadImoveis();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            ApiImoveis api = new ApiImoveis();
+            string search = txtSearch.Text;
+
+            LoadImoveis();
+
+
+            //if (api.GetFilter(search) != null)
+            //{
+            //    dgvImoveis.DataSource = api.GetFilter(search);
+            //}
+            
+
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Imoveis
             ApiImoveis api = new ApiImoveis();
 
             imoveis.cidade = txtCidade.Text;
-            imoveis.cidade = txtBairro.Text;
+            imoveis.bairro = txtBairro.Text;
             imoveis.type = txtTipo.Text;
             imoveis.value = Convert.ToInt32(txtValor.Text);
             imoveis.qtd_de_banheiros = Convert.ToInt32(txtBanheiros.Text);

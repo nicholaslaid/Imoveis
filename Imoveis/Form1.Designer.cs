@@ -29,17 +29,6 @@
         private void InitializeComponent()
         {
             dgvImoveis = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            cidade = new DataGridViewTextBoxColumn();
-            bairro = new DataGridViewTextBoxColumn();
-            tipo = new DataGridViewTextBoxColumn();
-            valor = new DataGridViewTextBoxColumn();
-            qtd_quartos = new DataGridViewTextBoxColumn();
-            qtd_banheiros = new DataGridViewTextBoxColumn();
-            qtd_vagas = new DataGridViewTextBoxColumn();
-            qtd_salas = new DataGridViewTextBoxColumn();
-            Editar = new DataGridViewButtonColumn();
-            Deletar = new DataGridViewButtonColumn();
             label1 = new Label();
             txtSearch = new TextBox();
             rbAluguel = new RadioButton();
@@ -48,6 +37,17 @@
             label2 = new Label();
             btnSearch = new Button();
             btnAdd = new Button();
+            id = new DataGridViewTextBoxColumn();
+            Deletar = new DataGridViewButtonColumn();
+            Editar = new DataGridViewButtonColumn();
+            cidade = new DataGridViewTextBoxColumn();
+            bairro = new DataGridViewTextBoxColumn();
+            tipo = new DataGridViewTextBoxColumn();
+            valor = new DataGridViewTextBoxColumn();
+            qtd_salas = new DataGridViewTextBoxColumn();
+            qtd_quartos = new DataGridViewTextBoxColumn();
+            qtd_banheiros = new DataGridViewTextBoxColumn();
+            qtd_vagas = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvImoveis).BeginInit();
             SuspendLayout();
             // 
@@ -55,7 +55,7 @@
             // 
             dgvImoveis.AllowUserToAddRows = false;
             dgvImoveis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvImoveis.Columns.AddRange(new DataGridViewColumn[] { id, cidade, bairro, tipo, valor, qtd_quartos, qtd_banheiros, qtd_vagas, qtd_salas, Editar, Deletar });
+            dgvImoveis.Columns.AddRange(new DataGridViewColumn[] { id, Deletar, Editar, cidade, bairro, tipo, valor, qtd_salas, qtd_quartos, qtd_banheiros, qtd_vagas });
             dgvImoveis.Location = new Point(21, 79);
             dgvImoveis.Name = "dgvImoveis";
             dgvImoveis.RowHeadersWidth = 62;
@@ -63,97 +63,6 @@
             dgvImoveis.Size = new Size(1268, 389);
             dgvImoveis.TabIndex = 0;
             dgvImoveis.CellClick += dgvImoveis_CellClick;
-            // 
-            // id
-            // 
-            id.DataPropertyName = "id";
-            id.HeaderText = "id";
-            id.MinimumWidth = 8;
-            id.Name = "id";
-            id.Visible = false;
-            id.Width = 8;
-            // 
-            // cidade
-            // 
-            cidade.DataPropertyName = "cidade";
-            cidade.HeaderText = "cidade";
-            cidade.MinimumWidth = 8;
-            cidade.Name = "cidade";
-            cidade.Width = 150;
-            // 
-            // bairro
-            // 
-            bairro.DataPropertyName = "bairro";
-            bairro.HeaderText = "bairro";
-            bairro.MinimumWidth = 8;
-            bairro.Name = "bairro";
-            bairro.Width = 150;
-            // 
-            // tipo
-            // 
-            tipo.DataPropertyName = "type";
-            tipo.HeaderText = "tipo";
-            tipo.MinimumWidth = 8;
-            tipo.Name = "tipo";
-            tipo.Width = 150;
-            // 
-            // valor
-            // 
-            valor.DataPropertyName = "value";
-            valor.HeaderText = "valor";
-            valor.MinimumWidth = 8;
-            valor.Name = "valor";
-            valor.Width = 150;
-            // 
-            // qtd_quartos
-            // 
-            qtd_quartos.DataPropertyName = "qtd_de_quartos";
-            qtd_quartos.HeaderText = "qtd_quartos";
-            qtd_quartos.MinimumWidth = 8;
-            qtd_quartos.Name = "qtd_quartos";
-            qtd_quartos.Width = 150;
-            // 
-            // qtd_banheiros
-            // 
-            qtd_banheiros.DataPropertyName = "qtd_de_banheiros";
-            qtd_banheiros.HeaderText = "qtd_banheiros";
-            qtd_banheiros.MinimumWidth = 8;
-            qtd_banheiros.Name = "qtd_banheiros";
-            qtd_banheiros.Width = 150;
-            // 
-            // qtd_vagas
-            // 
-            qtd_vagas.DataPropertyName = "qtd_de_vagas";
-            qtd_vagas.HeaderText = "qtd_vagas";
-            qtd_vagas.MinimumWidth = 8;
-            qtd_vagas.Name = "qtd_vagas";
-            qtd_vagas.Width = 150;
-            // 
-            // qtd_salas
-            // 
-            qtd_salas.DataPropertyName = "qtd_de_salas";
-            qtd_salas.HeaderText = "qtd_salas";
-            qtd_salas.MinimumWidth = 8;
-            qtd_salas.Name = "qtd_salas";
-            qtd_salas.Width = 150;
-            // 
-            // Editar
-            // 
-            Editar.DataPropertyName = "Editar";
-            Editar.HeaderText = "Editar";
-            Editar.MinimumWidth = 8;
-            Editar.Name = "Editar";
-            Editar.UseColumnTextForButtonValue = true;
-            Editar.Width = 150;
-            // 
-            // Deletar
-            // 
-            Deletar.DataPropertyName = "Deletar";
-            Deletar.HeaderText = "Deletar";
-            Deletar.MinimumWidth = 8;
-            Deletar.Name = "Deletar";
-            Deletar.UseColumnTextForButtonValue = true;
-            Deletar.Width = 150;
             // 
             // label1
             // 
@@ -221,6 +130,7 @@
             btnSearch.TabIndex = 7;
             btnSearch.Text = "Procurar";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // btnAdd
             // 
@@ -231,6 +141,99 @@
             btnAdd.Text = "Adicionar";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
+            // 
+            // id
+            // 
+            id.DataPropertyName = "id";
+            id.HeaderText = "id";
+            id.MinimumWidth = 8;
+            id.Name = "id";
+            id.Visible = false;
+            id.Width = 8;
+            // 
+            // Deletar
+            // 
+            Deletar.DataPropertyName = "Deletar";
+            Deletar.HeaderText = "Deletar";
+            Deletar.MinimumWidth = 8;
+            Deletar.Name = "Deletar";
+            Deletar.Text = "Deletar";
+            Deletar.UseColumnTextForButtonValue = true;
+            Deletar.Width = 150;
+            // 
+            // Editar
+            // 
+            Editar.DataPropertyName = "Editar";
+            Editar.HeaderText = "Editar";
+            Editar.MinimumWidth = 8;
+            Editar.Name = "Editar";
+            Editar.Text = "Editar";
+            Editar.UseColumnTextForButtonValue = true;
+            Editar.Width = 150;
+            // 
+            // cidade
+            // 
+            cidade.DataPropertyName = "cidade";
+            cidade.HeaderText = "cidade";
+            cidade.MinimumWidth = 8;
+            cidade.Name = "cidade";
+            cidade.Width = 150;
+            // 
+            // bairro
+            // 
+            bairro.DataPropertyName = "bairro";
+            bairro.HeaderText = "bairro";
+            bairro.MinimumWidth = 8;
+            bairro.Name = "bairro";
+            bairro.Width = 150;
+            // 
+            // tipo
+            // 
+            tipo.DataPropertyName = "type";
+            tipo.HeaderText = "tipo";
+            tipo.MinimumWidth = 8;
+            tipo.Name = "tipo";
+            tipo.Width = 150;
+            // 
+            // valor
+            // 
+            valor.DataPropertyName = "value";
+            valor.HeaderText = "valor";
+            valor.MinimumWidth = 8;
+            valor.Name = "valor";
+            valor.Width = 150;
+            // 
+            // qtd_salas
+            // 
+            qtd_salas.DataPropertyName = "qtd_de_salas";
+            qtd_salas.HeaderText = "qtd_salas";
+            qtd_salas.MinimumWidth = 8;
+            qtd_salas.Name = "qtd_salas";
+            qtd_salas.Width = 150;
+            // 
+            // qtd_quartos
+            // 
+            qtd_quartos.DataPropertyName = "qtd_de_quartos";
+            qtd_quartos.HeaderText = "qtd_quartos";
+            qtd_quartos.MinimumWidth = 8;
+            qtd_quartos.Name = "qtd_quartos";
+            qtd_quartos.Width = 150;
+            // 
+            // qtd_banheiros
+            // 
+            qtd_banheiros.DataPropertyName = "qtd_de_banheiros";
+            qtd_banheiros.HeaderText = "qtd_banheiros";
+            qtd_banheiros.MinimumWidth = 8;
+            qtd_banheiros.Name = "qtd_banheiros";
+            qtd_banheiros.Width = 150;
+            // 
+            // qtd_vagas
+            // 
+            qtd_vagas.DataPropertyName = "qtd_de_vagas";
+            qtd_vagas.HeaderText = "qtd_vagas";
+            qtd_vagas.MinimumWidth = 8;
+            qtd_vagas.Name = "qtd_vagas";
+            qtd_vagas.Width = 150;
             // 
             // Form1
             // 
@@ -267,15 +270,15 @@
         private Button btnSearch;
         private Button btnAdd;
         private DataGridViewTextBoxColumn id;
+        private DataGridViewButtonColumn Deletar;
+        private DataGridViewButtonColumn Editar;
         private DataGridViewTextBoxColumn cidade;
         private DataGridViewTextBoxColumn bairro;
         private DataGridViewTextBoxColumn tipo;
         private DataGridViewTextBoxColumn valor;
+        private DataGridViewTextBoxColumn qtd_salas;
         private DataGridViewTextBoxColumn qtd_quartos;
         private DataGridViewTextBoxColumn qtd_banheiros;
         private DataGridViewTextBoxColumn qtd_vagas;
-        private DataGridViewTextBoxColumn qtd_salas;
-        private DataGridViewButtonColumn Editar;
-        private DataGridViewButtonColumn Deletar;
     }
 }

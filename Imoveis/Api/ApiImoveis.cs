@@ -1,18 +1,23 @@
 ﻿using Imoveis.Models;
 
 using Newtonsoft.Json;
-
+using System.Diagnostics.Eventing.Reader;
 
 namespace Imoveis.Api
 {
     public class ApiImoveis
     {
-        public List<Imoveiss> GetAllImoveis()
+        public List<Imoveiss> GetAllImoveis(string filter)
         {
             List<Imoveiss> result = new List<Imoveiss>();
             ApiBase api = new ApiBase();
 
-            Result response = api.GetComand("imoveis/GetAll");
+            Result response = new Result();
+
+            if (!string.IsNullOrEmpty(filter) && !string.IsNullOrWhiteSpace(filter))
+                response = api.GetComand("imoveis/GetFilter?filter=" + filter);
+            else
+                response = api.GetComand("imoveis/GetAll");
 
             if (response.success == true)
             {
@@ -29,7 +34,7 @@ namespace Imoveis.Api
             Imoveiss result = new Imoveiss();
             ApiBase api = new ApiBase();
 
-            Result response = api.GetComand("job/Get?id=" + id);
+            Result response = api.GetComand("imoveis/Get?id=" + id);
 
             if (result != null && response.success)
             {
@@ -40,12 +45,12 @@ namespace Imoveis.Api
         }
 
 
-        public Imoveiss GetCidade(string cidade)
+        public Imoveiss GetFilter(string filter)
         {
             Imoveiss result = new Imoveiss();
             ApiBase api = new ApiBase();
 
-            Result response = api.GetComand("imoveis/GetCidade?cidade=" + cidade);
+            Result response = api.GetComand("imoveis/GetFilter?filter=" + filter);
 
             if (result != null && response.success)
             {
