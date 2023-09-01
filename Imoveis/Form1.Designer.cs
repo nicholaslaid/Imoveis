@@ -29,14 +29,6 @@
         private void InitializeComponent()
         {
             dgvImoveis = new DataGridView();
-            label1 = new Label();
-            txtSearch = new TextBox();
-            rbAluguel = new RadioButton();
-            rbComprar = new RadioButton();
-            rbAny = new RadioButton();
-            label2 = new Label();
-            btnSearch = new Button();
-            btnAdd = new Button();
             id = new DataGridViewTextBoxColumn();
             Deletar = new DataGridViewButtonColumn();
             Editar = new DataGridViewButtonColumn();
@@ -48,6 +40,14 @@
             qtd_quartos = new DataGridViewTextBoxColumn();
             qtd_banheiros = new DataGridViewTextBoxColumn();
             qtd_vagas = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            txtSearch = new TextBox();
+            rbAluguel = new RadioButton();
+            rbComprar = new RadioButton();
+            rbAny = new RadioButton();
+            label2 = new Label();
+            btnSearch = new Button();
+            btnAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvImoveis).BeginInit();
             SuspendLayout();
             // 
@@ -63,84 +63,6 @@
             dgvImoveis.Size = new Size(1268, 389);
             dgvImoveis.TabIndex = 0;
             dgvImoveis.CellClick += dgvImoveis_CellClick;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 499);
-            label1.Name = "label1";
-            label1.Size = new Size(78, 25);
-            label1.TabIndex = 1;
-            label1.Text = "Procurar";
-            // 
-            // txtSearch
-            // 
-            txtSearch.Location = new Point(96, 499);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(875, 31);
-            txtSearch.TabIndex = 2;
-            // 
-            // rbAluguel
-            // 
-            rbAluguel.AutoSize = true;
-            rbAluguel.Location = new Point(96, 557);
-            rbAluguel.Name = "rbAluguel";
-            rbAluguel.Size = new Size(87, 29);
-            rbAluguel.TabIndex = 3;
-            rbAluguel.TabStop = true;
-            rbAluguel.Text = "Alguel";
-            rbAluguel.UseVisualStyleBackColor = true;
-            // 
-            // rbComprar
-            // 
-            rbComprar.AutoSize = true;
-            rbComprar.Location = new Point(189, 561);
-            rbComprar.Name = "rbComprar";
-            rbComprar.Size = new Size(107, 29);
-            rbComprar.TabIndex = 4;
-            rbComprar.TabStop = true;
-            rbComprar.Text = "Comprar";
-            rbComprar.UseVisualStyleBackColor = true;
-            // 
-            // rbAny
-            // 
-            rbAny.AutoSize = true;
-            rbAny.Location = new Point(302, 561);
-            rbAny.Name = "rbAny";
-            rbAny.Size = new Size(164, 29);
-            rbAny.TabIndex = 5;
-            rbAny.TabStop = true;
-            rbAny.Text = "Sem preferencia";
-            rbAny.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 561);
-            label2.Name = "label2";
-            label2.Size = new Size(47, 25);
-            label2.TabIndex = 6;
-            label2.Text = "Tipo";
-            // 
-            // btnSearch
-            // 
-            btnSearch.Location = new Point(1021, 499);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(215, 74);
-            btnSearch.TabIndex = 7;
-            btnSearch.Text = "Procurar";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
-            // 
-            // btnAdd
-            // 
-            btnAdd.Location = new Point(21, 24);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(112, 34);
-            btnAdd.TabIndex = 8;
-            btnAdd.Text = "Adicionar";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
             // 
             // id
             // 
@@ -234,6 +156,85 @@
             qtd_vagas.MinimumWidth = 8;
             qtd_vagas.Name = "qtd_vagas";
             qtd_vagas.Width = 150;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 499);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 25);
+            label1.TabIndex = 1;
+            label1.Text = "Procurar";
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(96, 499);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(875, 31);
+            txtSearch.TabIndex = 2;
+            // 
+            // rbAluguel
+            // 
+            rbAluguel.AutoSize = true;
+            rbAluguel.Location = new Point(96, 557);
+            rbAluguel.Name = "rbAluguel";
+            rbAluguel.Size = new Size(87, 29);
+            rbAluguel.TabIndex = 3;
+            rbAluguel.TabStop = true;
+            rbAluguel.Text = "Alguel";
+            rbAluguel.UseVisualStyleBackColor = true;
+            // 
+            // rbComprar
+            // 
+            rbComprar.AutoSize = true;
+            rbComprar.Location = new Point(189, 561);
+            rbComprar.Name = "rbComprar";
+            rbComprar.Size = new Size(107, 29);
+            rbComprar.TabIndex = 4;
+            rbComprar.TabStop = true;
+            rbComprar.Text = "Comprar";
+            rbComprar.UseVisualStyleBackColor = true;
+            rbComprar.CheckedChanged += rbComprar_CheckedChanged;
+            // 
+            // rbAny
+            // 
+            rbAny.AutoSize = true;
+            rbAny.Location = new Point(302, 561);
+            rbAny.Name = "rbAny";
+            rbAny.Size = new Size(164, 29);
+            rbAny.TabIndex = 5;
+            rbAny.TabStop = true;
+            rbAny.Text = "Sem preferencia";
+            rbAny.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 561);
+            label2.Name = "label2";
+            label2.Size = new Size(47, 25);
+            label2.TabIndex = 6;
+            label2.Text = "Tipo";
+            // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(1021, 499);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(215, 74);
+            btnSearch.TabIndex = 7;
+            btnSearch.Text = "Procurar";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // btnAdd
+            // 
+            btnAdd.Location = new Point(21, 24);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(112, 34);
+            btnAdd.TabIndex = 8;
+            btnAdd.Text = "Adicionar";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // Form1
             // 

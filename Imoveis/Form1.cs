@@ -20,7 +20,20 @@ namespace Imoveis
         private void LoadImoveis()
         {
             ApiImoveis api = new ApiImoveis();
-            dgvImoveis.DataSource = api.GetAllImoveis(txtSearch.Text);
+            if(rbAluguel.Checked)
+            {
+                dgvImoveis.DataSource = api.GetAllImoveis("Alugar", txtSearch.Text);
+
+            }else if(rbComprar.Checked)
+            {
+                dgvImoveis.DataSource = api.GetAllImoveis("Comprar", txtSearch.Text);
+
+            }
+            else
+            {
+                dgvImoveis.DataSource = api.GetAllImoveis(null, txtSearch.Text);
+            }
+           
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -79,18 +92,16 @@ namespace Imoveis
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            ApiImoveis api = new ApiImoveis();
-            string search = txtSearch.Text;
-
             LoadImoveis();
+ 
+        }
 
-
-            //if (api.GetFilter(search) != null)
-            //{
-            //    dgvImoveis.DataSource = api.GetFilter(search);
-            //}
-            
-
+        private void rbComprar_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbComprar.Checked)
+            {
+               
+            }
         }
     }
 }

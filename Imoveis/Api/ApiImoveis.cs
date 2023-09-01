@@ -7,15 +7,16 @@ namespace Imoveis.Api
 {
     public class ApiImoveis
     {
-        public List<Imoveiss> GetAllImoveis(string filter)
+        public List<Imoveiss> GetAllImoveis(string filter, string search)
         {
             List<Imoveiss> result = new List<Imoveiss>();
             ApiBase api = new ApiBase();
 
             Result response = new Result();
 
-            if (!string.IsNullOrEmpty(filter) && !string.IsNullOrWhiteSpace(filter))
-                response = api.GetComand("imoveis/GetFilter?filter=" + filter);
+            if (!string.IsNullOrEmpty(filter) && !string.IsNullOrWhiteSpace(filter) || !string.IsNullOrEmpty(search) && !string.IsNullOrWhiteSpace(search))
+                response = api.GetComand("imoveis/GetWithFilter?filter=" + filter + "&search=" + search);
+            
             else
                 response = api.GetComand("imoveis/GetAll");
 
@@ -45,50 +46,7 @@ namespace Imoveis.Api
         }
 
 
-        public Imoveiss GetFilter(string filter)
-        {
-            Imoveiss result = new Imoveiss();
-            ApiBase api = new ApiBase();
-
-            Result response = api.GetComand("imoveis/GetFilter?filter=" + filter);
-
-            if (result != null && response.success)
-            {
-                result = JsonConvert.DeserializeObject<Imoveiss>(response.data);
-            }
-
-            return result;
-        }
-
-        public Imoveiss GetBairro(string bairro)
-        {
-            Imoveiss result = new Imoveiss();
-            ApiBase api = new ApiBase();
-
-            Result response = api.GetComand("imoveis/GetBairro?bairro=" + bairro);
-
-            if (result != null && response.success)
-            {
-                result = JsonConvert.DeserializeObject<Imoveiss>(response.data);
-            }
-
-            return result;
-        }
-
-        public Imoveiss GetTipo(string tipo)
-        {
-            Imoveiss result = new Imoveiss();
-            ApiBase api = new ApiBase();
-
-            Result response = api.GetComand("imoveis/GetTipo?tipo=" + tipo);
-
-            if (result != null && response.success)
-            {
-                result = JsonConvert.DeserializeObject<Imoveiss>(response.data);
-            }
-
-            return result;
-        }
+      
         public Result Add(Imoveiss imoveiss)
         {
             ApiBase api = new ApiBase();
