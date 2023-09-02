@@ -11,6 +11,8 @@ namespace ImoveisApp.Global
         //Api
         public static string apiBaseUrl = "http://localhost:5255/api/";
 
+        public static string token = string.Empty;
+
         public static Imoveiss tempImovel = new Imoveiss();
         public static bool edit = false;
     }

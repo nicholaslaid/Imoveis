@@ -20,18 +20,21 @@ namespace Imoveis
         private void LoadImoveis()
         {
             ApiImoveis api = new ApiImoveis();
+
+            string token = api.GetToken("admin");
+
             if(rbAluguel.Checked)
             {
-                dgvImoveis.DataSource = api.GetAllImoveis("Alugar", txtSearch.Text);
+                dgvImoveis.DataSource = api.GetAllImoveis(token, "Aluguel", txtSearch.Text);
 
             }else if(rbComprar.Checked)
             {
-                dgvImoveis.DataSource = api.GetAllImoveis("Comprar", txtSearch.Text);
+                dgvImoveis.DataSource = api.GetAllImoveis(token, "Compra", txtSearch.Text);
 
             }
             else
             {
-                dgvImoveis.DataSource = api.GetAllImoveis(null, txtSearch.Text);
+                dgvImoveis.DataSource = api.GetAllImoveis(token, null, txtSearch.Text);
             }
            
         }
@@ -51,8 +54,9 @@ namespace Imoveis
 
                 if (e.ColumnIndex == dgvImoveis.Columns["Editar"].Index)
                 {
+                    string token = api.GetToken("admin");
                     Config.edit = true;
-                    Config.tempImovel = api.Get(id);
+                    Config.tempImovel = api.Get(id, token);
 
                     frmAdd edit = new frmAdd();
                     edit.ShowDialog();
@@ -67,8 +71,8 @@ namespace Imoveis
 
                     if (dialogResult == DialogResult.Yes)
                     {
-
-                        bool response = api.Delete(id);
+                        string token = api.GetToken("admin");
+                        bool response = api.Delete(id, token);
 
                         if (response)
                         {

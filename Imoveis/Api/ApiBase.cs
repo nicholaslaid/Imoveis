@@ -30,6 +30,7 @@ namespace Imoveis.Api
 
         }
 
+
         public Result PostComand(string url, string parameters)
         {
             HttpClient client = new HttpClient();

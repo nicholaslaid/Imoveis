@@ -15,5 +15,10 @@ namespace Imoveis.Models
         public string errorMessage { get; set; }
 
         public string data { get; set; }
+
+        public static implicit operator string(Result v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
